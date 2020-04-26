@@ -14,10 +14,6 @@ class NoProductError(Exception):
     def __str__(self):
         return "product is not selected"
 
-class ProductExistError(Exception):
-    def __str__(self):
-        return "product is already selected"
-
 class ChangeExistError(Exception):
     def __str__(self):
         return "change exist with system"

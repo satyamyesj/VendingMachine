@@ -9,7 +9,6 @@ class VendingMachine:
         self.inserted_coins={}
         self.selected_product=None
         self.current_state=Ready(self)
-       
 
     def reset_prodcut_reserve(self, product_reserve):
         self.product_reserve=product_reserve
@@ -139,7 +138,7 @@ class ProductSelected(VMState):
         raise TransactionExistError
 
     def select_product(self, product):
-        raise ProductExistError
+        raise TransactionExistError
 
     def dispense_change(self):
         self.VM.current_state=DispensingChange(self.VM)
@@ -161,7 +160,7 @@ class DispensingChange(VMState):
         if change==None:
             print("no enough change for selected product")
             self.VM.return_change(self.VM.inserted_coins)
-            self.VM.current_state.cancel_transaction()
+            self.VM.current_state=CancellingTransaction(self.VM)
         else:   
             print("please collect your change", change)
             self.VM.return_change(change)
@@ -222,17 +221,17 @@ class CancellingTransaction(VMState):
         self.VM.current_state=Ready(self.VM)
 
     def insert_coins(self, coins):
-        pass
+        raise TransactionExistError
 
     def select_product(self, product):
-        pass
+        raise TransactionExistError
 
     def dispense_change(self):
-        pass
+        raise TransactionExistError
 
     def dispense_product(self):
-        pass
+        raise TransactionExistError
 
     def cancel_transaction(self):
-        pass
+        raise CantCancelTransaction
 
