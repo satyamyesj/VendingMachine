@@ -69,7 +69,7 @@ class VendingMachine:
         return value
 
     def __str__(self):
-        return "VM[\n\tcoin_reserve:{},\n\tproduct_reserve:{},\n\tproduct_price:{},\n\tinserted_coin:{},\n\tselected_product:{}\n\t]".format(self.coin_reserve, self.product_reserve, self.product_price, self.inserted_coins, self.selected_product)
+        return "\tVM[\n\tcoin_reserve:{},\n\tproduct_reserve:{},\n\tproduct_price:{},\n\tinserted_coin:{},\n\tselected_product:{}\n\t]".format(self.coin_reserve, self.product_reserve, self.product_price, self.inserted_coins, self.selected_product)
 
 
 
@@ -130,7 +130,7 @@ class ProductSelected(VMState):
             print("selected product is out of stock")
             self.VM.current_state=CancellingTransaction(self.VM)
         else:
-            print("product cost more than inserted money")
+            print("product costs more than inserted money")
             self.VM.current_state=CancellingTransaction(self.VM)
             
 
