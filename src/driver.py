@@ -10,7 +10,7 @@ def main():
     vm=VendingMachine(coin_reserve, product_reserve, product_price)
     coins={Coin.quarter:1, Coin.dime: 2, Coin.nickel: 1}
     vm.insert_coins(coins)
-    vm.dispense_change()
+    #vm.dispense_change()
     #vm.cancel_transaction()
     vm.select_product(Product.soda)
     #vm.cancel_transaction()
